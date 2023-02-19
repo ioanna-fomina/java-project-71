@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build-run
 
 build:
-	make -C app build
+	make -C app ./gradlew clean installDist checkstyleMain
 
 run-dist:
 	make -C run-dist
