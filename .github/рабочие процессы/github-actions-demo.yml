@@ -15,9 +15,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-  build:
+      - run: echo "🍏 This job's status is ${{ job.status }}.
+  setup-java:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: ./gradlew clean installDist checkstyleMain
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+      - run: make -C app build
