@@ -51,8 +51,9 @@ public class Differ {
             throw new Exception("File '" + file2 + "' does not exist");
         }
         Map<String, Object> result = parse(getMap(file1), getMap(file2));
-        return result.entrySet().stream()
+        String resultString = result.entrySet().stream()
                 .map(Differ::entryToString)
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n  "));
+        return "{\n" + resultString + "\n}";
     }
 }

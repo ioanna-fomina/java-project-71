@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'checkstyle'
 }
 
 group 'hexlet.code'
@@ -28,4 +29,8 @@ application {
 
 compileJava {
     options.release = 17
+}
+
+checkstyle {
+    toolVersion '9.2.1'
 }
