@@ -1,0 +1,19 @@
+{
+  "- keyEight": ["16", "mar", "1998"],
+  "+ keyEight": [16, 6, 1996],
+  "- keyFive": "5",
+  "+ keyFive": ["5", "55", "5"],
+  "  keyFour": true,
+  "- keyNine": false,
+  "+ keyNine": true,
+  "  keyOne": "valueOne",
+  "- keySeven": [false, true, true, true],
+  "- keySix": [1, 2, 3, 5],
+  "+ keySix": [1, 2, 3, 4],
+  "- keyThree": "null",
+  "+ keyThree": false,
+  "- keyTwo": 2,
+  "+ seven": 7,
+  "+ ten": "10",
+  "+ two": "two"
+}

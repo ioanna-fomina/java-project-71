@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'checkstyle'
+    id 'jacoco'
 }
 
 group 'hexlet.code'
@@ -19,9 +20,10 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     implementation 'info.picocli:picocli:4.7.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
-    implementation 'user.java.io:user.java.io:2020.134.36653'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    //testImplementation 'org.junit:junit-bom:5.9.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 test {
@@ -38,4 +40,8 @@ compileJava {
 
 checkstyle {
     toolVersion '9.2.1'
+}
+
+test {
+    useJUnitPlatform()
 }

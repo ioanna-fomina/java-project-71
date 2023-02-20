@@ -45,6 +45,11 @@ public class Differ {
     static String entryToString(Map.Entry<String, Object> item) {
         return item.getKey() + ": " + item.getValue().toString();
     }
+    /*static Path getFile(Map<String, Object> map) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File("resultJson.json"), map);
+        return Path.of("resultJson.json");
+    }*/
     public static String generate(File file1, File file2) throws Exception {
         Path path1 = Paths.get(file1.toURI()).toAbsolutePath().normalize();
         Path path2 = Paths.get(file2.toURI()).toAbsolutePath().normalize();
@@ -59,6 +64,7 @@ public class Differ {
         String resultString = result.entrySet().stream()
                 .map(Differ::entryToString)
                 .collect(Collectors.joining("\n  "));
-        return "{\n" + resultString + "\n}";
+        return "{\n  " + resultString + "\n}";
+        //return Files.readString(getFile(result));
     }
 }
