@@ -3,6 +3,7 @@ package hexlet.code;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 //import java.nio.file.Files;
@@ -12,12 +13,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 public class DifferTest {
     static String expectJsonString;
-    static File fileJson1;
-    static File fileJson2;
+    static File file1;
+    static File file2;
 
-
-    @Test
-    public void testDiffer() throws Exception {
+    @BeforeAll
+    static void beforeAll() {
         expectJsonString = """
                 {
                   - keyEight: [16, mar, 1998]
@@ -38,11 +38,27 @@ public class DifferTest {
                   + ten: 10
                   + two: two
                 }""";
+    }
+
+    @Test
+    public void testDifferJson() throws Exception {
         Path path1 = Paths.get("src/test/resources/oneTest.json");
         Path path2 = Paths.get("src/test/resources/twoTest.json");
-        fileJson1 = path1.toFile();
-        fileJson2 = path2.toFile();
-        String actual = Differ.generate(fileJson1, fileJson2);
+        file1 = path1.toFile();
+        file2 = path2.toFile();
+        String actual = Differ.generate(file1, file2);
+        System.out.println(expectJsonString);
+        System.out.println(actual);
+        assertEquals(expectJsonString, actual);
+    }
+
+    @Test
+    public void testDifferYaml() throws Exception {
+        Path path1 = Paths.get("src/test/resources/oneTest.yml");
+        Path path2 = Paths.get("src/test/resources/twoTest.yml");
+        file1 = path1.toFile();
+        file2 = path2.toFile();
+        String actual = Differ.generate(file1, file2);
         System.out.println(expectJsonString);
         System.out.println(actual);
         assertEquals(expectJsonString, actual);

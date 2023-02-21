@@ -17,39 +17,26 @@ import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
 public class Differ {
-    static Map<String, Object> parse(Map<String, Object> data1, Map<String, Object> data2) {
-        Set<String> keys = new TreeSet<>(Comparator.naturalOrder());
-        keys.addAll(data1.keySet());
-        keys.addAll(data2.keySet());
-        Map<String, Object> result = new LinkedHashMap<>();
-
-        for (String key: keys) {
-            if (!data1.containsKey(key)) {
-                result.put("+ " + key, data2.get(key));
-            } else if (!data2.containsKey(key)) {
-                result.put("- " + key, data1.get(key));
-            } else if (data1.get(key).equals(data2.get(key))) {
-                result.put("  " + key, data1.get(key));
-            } else {
-                result.put("- " + key, data1.get(key));
-                result.put("+ " + key, data2.get(key));
-            }
-        }
-        return result;
-    }
-    static Map<String, Object> getMap(File file) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> map = mapper.readValue(file, Map.class);
-        return map;
-    }
     static String entryToString(Map.Entry<String, Object> item) {
-        return item.getKey() + ": " + item.getValue().toString();
+        String key = item.getKey();
+        String value = "";
+        if (item.getValue() == null) {
+            value = "null";
+        } else {
+            value = item.getValue().toString();
+        }
+        return key + ": " + value;
     }
     /*static Path getFile(Map<String, Object> map) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(new File("resultJson.json"), map);
         return Path.of("resultJson.json");
     }*/
+    static String getFormat(Path path) {
+        String filename = path.getFileName().toString();
+        int pointIndex = filename.lastIndexOf(".");
+        return filename.substring(pointIndex + 1);
+    }
     public static String generate(File file1, File file2) throws Exception {
         Path path1 = Paths.get(file1.toURI()).toAbsolutePath().normalize();
         Path path2 = Paths.get(file2.toURI()).toAbsolutePath().normalize();
@@ -60,7 +47,9 @@ public class Differ {
         if (!Files.exists(path2)) {
             throw new Exception("File '" + file2 + "' does not exist");
         }
-        Map<String, Object> result = parse(getMap(file1), getMap(file2));
+        String formatFile = getFormat(path1);
+
+        Map<String, Object> result = Parser.parse(file1, file2, formatFile);
         String resultString = result.entrySet().stream()
                 .map(Differ::entryToString)
                 .collect(Collectors.joining("\n  "));
