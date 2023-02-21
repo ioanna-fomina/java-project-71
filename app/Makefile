@@ -16,6 +16,9 @@ check-test:
 
 test:
 	./gradlew test
+	
+report:
+	./gradlew jacocoTestReport
 
 run:
 	./gradlew run
