@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build-run
 
 build:
-	make -C app clean build #check check-test test
+	make -C app clean build check check-test test
 
 run-dist:
 	make -C app run-dist

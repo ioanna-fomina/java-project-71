@@ -3,8 +3,10 @@ package hexlet.code;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.io.File;
 import java.util.*;
+
+import java.io.File;
+
 
 public class Parser {
     static Map<String, Object> getData(File file, String format) throws Exception {
