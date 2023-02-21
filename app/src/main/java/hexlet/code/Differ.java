@@ -20,11 +20,6 @@ public class Differ {
         }
         return key + ": " + value;
     }
-    /*static Path getFile(Map<String, Object> map) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File("resultJson.json"), map);
-        return Path.of("resultJson.json");
-    }*/
     static String getFormat(Path path) {
         String filename = path.getFileName().toString();
         int pointIndex = filename.lastIndexOf(".");
@@ -47,6 +42,5 @@ public class Differ {
                 .map(Differ::entryToString)
                 .collect(Collectors.joining("\n  "));
         return "{\n  " + resultString + "\n}";
-        //return Files.readString(getFile(result));
     }
 }

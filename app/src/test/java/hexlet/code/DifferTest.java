@@ -34,6 +34,8 @@ public class DifferTest {
                   - keyThree: null
                   + keyThree: false
                   - keyTwo: 2
+                  - obj: {nestedKey=value, isNested=true}
+                  + obj: {nestedKey=value2, isNested2=true}
                   + seven: 7
                   + ten: 10
                   + two: two

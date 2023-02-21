@@ -8,5 +8,9 @@
   "seven": 7,
   "keyEight": [16, 6, 1996],
   "keyNine": true,
-  "ten": "10"
+  "ten": "10",
+  "obj": {
+    "nestedKey": "value2",
+    "isNested2": true
+  }
 }

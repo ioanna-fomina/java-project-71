@@ -3,21 +3,17 @@ package hexlet.code;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.util.*;
-
 import java.io.File;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 public class Parser {
     static Map<String, Object> getData(File file, String format) throws Exception {
         ObjectMapper mapper = null;
-        //Map<String, Object> map = mapper.readValue(file, Map.class);
-        //return map;
-        /*if (format.equals("json")) {
-            mapper = new ObjectMapper();
-        } else if (format.equals("yml")) {
-            mapper = new YAMLMapper();
-        }*/
         switch (format) {
             case "json":
                 mapper = new ObjectMapper();
