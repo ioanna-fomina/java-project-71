@@ -1,6 +1,5 @@
 package hexlet.code.formatters;
 
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -11,7 +10,7 @@ public class FormatterPlain {
             string = "null";
         } else if (value.toString().contains("[") | value.toString().contains("{")) {
             string = "[complex value]";
-        } else if (value.getClass().equals(String.class)){
+        } else if (value.getClass().equals(String.class)) {
             string = "'" + value + "'";
         } else {
             string = value.toString();
