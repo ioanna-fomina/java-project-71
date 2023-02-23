@@ -5,27 +5,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import java.util.List;
 import java.util.Map;
-
-import java.util.stream.Collectors;
+import java.util.TreeMap;
 
 public class Differ {
-    static String entryToString(Map.Entry<String, Object> item) {
-        String key = item.getKey();
-        String value = "";
-        if (item.getValue() == null) {
-            value = "null";
-        } else {
-            value = item.getValue().toString();
-        }
-        return key + ": " + value;
-    }
-    static String getFormat(Path path) {
+    static String getFormatFile(Path path) {
         String filename = path.getFileName().toString();
         int pointIndex = filename.lastIndexOf(".");
         return filename.substring(pointIndex + 1);
     }
-    public static String generate(File file1, File file2) throws Exception {
+    public static String generate(File file1, File file2, String format) throws Exception {
         Path path1 = Paths.get(file1.toURI()).toAbsolutePath().normalize();
         Path path2 = Paths.get(file2.toURI()).toAbsolutePath().normalize();
 
@@ -35,12 +25,11 @@ public class Differ {
         if (!Files.exists(path2)) {
             throw new Exception("File '" + file2 + "' does not exist");
         }
-        String formatFile = getFormat(path1);
+        String formatFile = getFormatFile(path1);
 
-        Map<String, Object> result = Parser.parse(file1, file2, formatFile);
-        String resultString = result.entrySet().stream()
-                .map(Differ::entryToString)
-                .collect(Collectors.joining("\n  "));
-        return "{\n  " + resultString + "\n}";
+        List<TreeMap> result = Parser.parse(file1, file2, formatFile);
+        String formattedResult = Formatter.buildFormat(result, format);
+
+        return formattedResult;
     }
 }
