@@ -31,6 +31,7 @@ public class FormatterPlain {
     }
     public static String plain(TreeMap<String, String> keys, Map<String, Object> data1, Map<String, Object> data2) {
         var result = new StringBuilder();
+
         for (Map.Entry<String, String> entry: keys.entrySet()) {
             String key = entry.getKey();
 

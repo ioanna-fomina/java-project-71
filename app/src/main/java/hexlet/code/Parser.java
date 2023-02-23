@@ -41,7 +41,9 @@ public class Parser {
     public static LinkedList<TreeMap> parse(File file1, File file2, String formatFile) throws Exception {
         TreeMap<String, Object> data1 = new TreeMap<>(getData(file1, formatFile));
         TreeMap<String, Object> data2 = new TreeMap<>(getData(file2, formatFile));
+
         Set<String> keys = new TreeSet<>(Comparator.naturalOrder());
+
         keys.addAll(data1.keySet());
         keys.addAll(data2.keySet());
 
