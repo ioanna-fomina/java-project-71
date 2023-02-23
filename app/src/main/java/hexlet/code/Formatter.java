@@ -1,5 +1,6 @@
 package hexlet.code;
 
+//import hexlet.code.formatters.FormatterJson;
 import hexlet.code.formatters.FormatterPlain;
 import hexlet.code.formatters.FormatterStylish;
 
@@ -21,6 +22,8 @@ public class Formatter {
             case "plain":
                 result = FormatterPlain.plain(keys, data1, data2);
                 break;
+            /*case "json":
+                result = FormatterJson.json(keys, data1, data2);*/
             default:
                 throw new Exception("This format is not available");
         }
