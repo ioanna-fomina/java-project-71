@@ -17,7 +17,7 @@ public class DifferTest {
     static File yamlFile2;
 
     @BeforeAll
-    static void beforeAll() throws Exception{
+    static void beforeAll() throws Exception {
         jsonFile1 = Paths.get("src/test/resources/oneTest.json").toFile();
         jsonFile2 = Paths.get("src/test/resources/twoTest.json").toFile();
 
