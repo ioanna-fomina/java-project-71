@@ -3,7 +3,6 @@ package hexlet.code;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import java.util.List;
 import java.util.TreeMap;
@@ -14,10 +13,9 @@ public class Differ {
         int pointIndex = filename.lastIndexOf(".");
         return filename.substring(pointIndex + 1);
     }
-    public static String generate(File file1, File file2, String format) throws Exception {
-        Path path1 = Paths.get(file1.toURI()).toAbsolutePath().normalize();
-        Path path2 = Paths.get(file2.toURI()).toAbsolutePath().normalize();
-
+    public static String generate(Path path1, Path path2, String format) throws Exception {
+        File file1 = path1.toFile();
+        File file2 = path2.toFile();
         if (!Files.exists(path1)) {
             throw new Exception("File '" + file1 + "' does not exist");
         }
