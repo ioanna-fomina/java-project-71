@@ -36,17 +36,10 @@ public class FormatterPlain {
             String key = entry.getKey();
 
             switch (entry.getValue()) {
-                case "added":
-                    result.append(addedToString(key, data2.get(key)));
-                    break;
-                case "removed":
-                    result.append(removedToString(key));
-                    break;
-                case "updated":
-                    result.append(updatedToString(key, data1.get(key), data2.get(key)));
-                    break;
-                default:
-                    break;
+                case "added" -> result.append(addedToString(key, data2.get(key)));
+                case "removed" -> result.append(removedToString(key));
+                case "updated" -> result.append(updatedToString(key, data1.get(key), data2.get(key)));
+                default -> { }
             }
             if ((!key.equals(keys.lastKey()) && !entry.getValue().equals("unchanged"))) {
                 result.append("\n");

@@ -36,20 +36,11 @@ public class FormatterJson {
             generator.writeStartObject();
             String key = entry.getKey();
             switch (entry.getValue()) {
-                case "added":
-                    fieldToJson(generator, key, "added", data2.get(key));
-                    break;
-                case "removed":
-                    fieldToJson(generator, key, "deleted", data1.get(key));
-                    break;
-                case "unchanged":
-                    fieldToJson(generator, key, "unchanged", data1.get(key));
-                    break;
-                case "updated":
-                    fieldToJson(generator, key, "changed", data1.get(key), data2.get(key));
-                    break;
-                default:
-                    break;
+                case "added" -> fieldToJson(generator, key, "added", data2.get(key));
+                case "removed" -> fieldToJson(generator, key, "deleted", data1.get(key));
+                case "unchanged" -> fieldToJson(generator, key, "unchanged", data1.get(key));
+                case "updated" -> fieldToJson(generator, key, "changed", data1.get(key), data2.get(key));
+                default -> { }
             }
             generator.writeEndObject();
             if (!key.equals(keys.lastKey())) {
@@ -58,7 +49,6 @@ public class FormatterJson {
         }
         generator.close();
         Path filepath = Paths.get(jsonFile.toURI()).toAbsolutePath().normalize();
-        String result = "file with the result:  " + filepath + "\n\n" + new String(Files.readAllBytes(filepath));
-        return result;
+        return "file with the result:  " + filepath + "\n\n" + new String(Files.readAllBytes(filepath));
     }
 }
