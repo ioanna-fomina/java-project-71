@@ -14,4 +14,4 @@
 ![img_5.png](img_5.png)
 
 Сравнение файлов JSON и YAML со вложенными структурами: вывод в формате json
-![img_6.png](img_6.png)
+![img.png](img.png)

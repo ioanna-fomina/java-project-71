@@ -1,14 +1,1 @@
-{"- keyEight": ["16", "mar", "1998"],"+ keyEight": [16, 6, 1996],"- keyFive": "5","+ keyFive": ["5", "55", "5"], "  keyFour": true,
-  "- keyNine": false,
-  "+ keyNine": true,
-  "  keyOne": "valueOne",
-  "- keySeven": [false, true, true, true],
-  "- keySix": [1, 2, 3, 5],
-  "+ keySix": [1, 2, 3, 4],
-  "- keyThree": "null",
-  "+ keyThree": false,
-  "- keyTwo": 2,
-  "+ seven": 7,
-  "+ ten": "10",
-  "+ two": "two"
-}
+[{"key":"keyFive","type":"added","value":["one","two","three"]}, {"key":"keyFour","type":"changed","value1":{"key1":[1,0],"key2":["one","two","three"]},"value2":[true,false]}, {"key":"keySeven","type":"deleted","value":[false,null,true,true]}, {"key":"keySix","type":"unchanged","value":[1,2,3,4]}, {"key":"keyThree","type":"changed","value1":[1,1,2],"value2":[0,1,2]}, {"key":"obj","type":"unchanged","value":{"nestedKey":"value","isNested":true}}, {"key":"oneKey","type":"changed","value1":"value1","value2":1}, {"key":"seven","type":"added","value":{"sevenKey":7}}, {"key":"ten","type":"added","value":{"one":[1,1],"two":[2,1,0],"three":"three"}}]

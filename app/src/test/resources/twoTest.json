@@ -1,12 +1,12 @@
 {
-  "keyThree": ["0", "1", "2"],
-  "keyFour": [true, false]
-  "keyFive": ["5", "55", "5"],
+  "oneKey": 1,
+  "keyThree": [0, 1, 2],
+  "keyFour": [true, false],
+  "keyFive": ["one", "two", "three"],
   "keySix": [1, 2, 3, 4],
   "seven": {
     "sevenKey": 7
   },
-  "keyEight": [16, 6, 1996],
   "ten": {
     "one": [1, 1],
     "two": [2, 1, 0],

@@ -18,7 +18,7 @@ public class FormatterJson {
         generator.writeObjectField("type", type);
         if (type.equals("changed")) {
             generator.writeObjectField("value1", value1);
-            generator.writeObjectField("value1", value2);
+            generator.writeObjectField("value2", value2);
         } else {
             generator.writeObjectField("value", value1);
         }
@@ -32,6 +32,7 @@ public class FormatterJson {
         File jsonFile = new File("result.json");
         JsonGenerator generator = mapper.createGenerator(jsonFile, JsonEncoding.UTF8);
 
+        generator.writeRaw("[");
         for (Map.Entry<String, String> entry: keys.entrySet()) {
             generator.writeStartObject();
             String key = entry.getKey();
@@ -47,8 +48,9 @@ public class FormatterJson {
                 generator.writeRaw(",");
             }
         }
+        generator.writeRaw("]");
         generator.close();
         Path filepath = Paths.get(jsonFile.toURI()).toAbsolutePath().normalize();
-        return "file with the result:  " + filepath + "\n\n" + new String(Files.readAllBytes(filepath));
+        return Files.readString(filepath);
     }
 }

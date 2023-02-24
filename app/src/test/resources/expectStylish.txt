@@ -1,20 +1,14 @@
 {
-  - keyEight: [16, mar, 1998]
-  + keyEight: [16, 6, 1996]
-  + keyFive: [5, 55, 5]
-    keyFour: true
-  - keyNine: false
-  + keyNine: true
-    keyOne: valueOne
-  - keySeven: [false, true, true, true]
-  - keySix: [1, 2, 3, 5]
-  + keySix: [1, 2, 3, 4]
-  - keyThree: null
-  + keyThree: false
-  - keyTwo: 2
-  - obj: {nestedKey=value, isNested=true}
-  + obj: {nestedKey=value2, isNested2=true}
-  + seven: 7
-  + ten: 10
-  + two: two
+  + keyFive: [one, two, three]
+  - keyFour: {key1=[1, 0], key2=[one, two, three]}
+  + keyFour: [true, false]
+  - keySeven: [false, null, true, true]
+    keySix: [1, 2, 3, 4]
+  - keyThree: [1, 1, 2]
+  + keyThree: [0, 1, 2]
+    obj: {nestedKey=value, isNested=true}
+  - oneKey: value1
+  + oneKey: 1
+  + seven: {sevenKey=7}
+  + ten: {one=[1, 1], two=[2, 1, 0], three=three}
 }

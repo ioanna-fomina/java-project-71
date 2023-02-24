@@ -1,13 +1,10 @@
-keyOne: valueOne
-keyTwo: 2
-keyThree: null
-keyFour: true
-keyFive: 5
-keySix: [1, 2, 3, 5]
-keySeven: [false, true, true, true]
-keyEight: [16, mar, 1998]
-keyNine: false
-obj: {
-  nestedKey: value,
+oneKey: value1
+keyThree: [1, 1, 2]
+keyFour:
+  key1: [1, 0]
+  key2: [one, two, three]
+keySix: [1, 2, 3, 4]
+keySeven: [false, null, true, true]
+obj:
+  nestedKey: value
   isNested: true
-}

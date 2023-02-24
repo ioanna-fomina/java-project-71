@@ -1,11 +1,7 @@
-Property 'keyEight' was updated. From [complex value] to [complex value]
-Property 'keyFive' was updated. From 5 to [complex value]
-Property 'keyNine' was updated. From false to true
+Property 'keyFive' was added with value: [complex value]
+Property 'keyFour' was updated. From [complex value] to [complex value]
 Property 'keySeven' was removed
-Property 'keySix' was updated. From [complex value] to [complex value]
-Property 'keyThree' was updated. From null to false
-Property 'keyTwo' was removed
-Property 'obj' was updated. From [complex value] to [complex value]
-Property 'seven' was added with value: 7
-Property 'ten' was added with value: 10
-Property 'two' was added with value: 'two'
+Property 'keyThree' was updated. From [complex value] to [complex value]
+Property 'oneKey' was updated. From 'value1' to 1
+Property 'seven' was added with value: [complex value]
+Property 'ten' was added with value: [complex value]
