@@ -15,7 +15,7 @@ import java.util.TreeSet;
 
 public class Parser {
     static Map<String, Object> getData(File file, String format) throws Exception {
-        ObjectMapper mapper = null;
+        ObjectMapper mapper = new ObjectMapper();
         switch (format) {
             case "json":
                 mapper = new ObjectMapper();

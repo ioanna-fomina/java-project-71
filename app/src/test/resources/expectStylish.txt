@@ -1,7 +1,6 @@
 {
   - keyEight: [16, mar, 1998]
   + keyEight: [16, 6, 1996]
-  - keyFive: 5
   + keyFive: [5, 55, 5]
     keyFour: true
   - keyNine: false

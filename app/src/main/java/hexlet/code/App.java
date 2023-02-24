@@ -12,22 +12,26 @@ import java.util.concurrent.Callable;
         description = "Compares two configuration files and shows a difference.")
 public class App implements Callable<String> {
 
-    @Parameters(index = "0", description = "path to first file")
+    @Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
     private File filepath1;
 
-    @Parameters(index = "1", description = "path to second file")
+    @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
     private File filepath2;
 
-    @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish",
+            paramLabel = "format", description = "output format [default: ${DEFAULT-VALUE}]")
     private String format;
 
     @Override
-    public String call() throws Exception {
-        File file1 = filepath1;
-        File file2 = filepath2;
-        String diff = Differ.generate(file1, file2, format);
-        System.out.println(diff);
-        return diff;
+    public String call() {
+        try {
+            String diff = Differ.generate(filepath1, filepath2, format);
+            System.out.println(diff);
+            return "0";
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+            return "123";
+        }
     }
 
     public static void main(String... args) {

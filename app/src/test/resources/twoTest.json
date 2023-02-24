@@ -1,16 +1,19 @@
 {
-  "keyOne": "valueOne",
-  "two": "two",
-  "keyThree": false,
-  "keyFour": true,
+  "keyThree": ["0", "1", "2"],
+  "keyFour": [true, false]
   "keyFive": ["5", "55", "5"],
   "keySix": [1, 2, 3, 4],
-  "seven": 7,
+  "seven": {
+    "sevenKey": 7
+  },
   "keyEight": [16, 6, 1996],
-  "keyNine": true,
-  "ten": 10,
+  "ten": {
+    "one": [1, 1],
+    "two": [2, 1, 0],
+    "three": "three"
+  },
   "obj": {
-    "nestedKey": "value2",
-    "isNested2": true
+    "nestedKey": "value",
+    "isNested": true
   }
 }
