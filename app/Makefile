@@ -6,7 +6,7 @@ build:
 	./gradlew installDist
 
 run-dist:
-	./build/install/app/bin/app
+	./build/install/app/bin/app -f plain file1.json file2.json
 
 check:
 	./gradlew checkstyleMain
