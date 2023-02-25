@@ -36,6 +36,6 @@ public class FormatterStylish {
                     break;
             }
         }
-        return "{" + result + "\n}\n";
+        return "{" + result + "\n}";
     }
 }
