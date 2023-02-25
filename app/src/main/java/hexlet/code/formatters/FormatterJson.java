@@ -24,7 +24,7 @@ public class FormatterJson {
         }
     }
     static void fieldToJson(JsonGenerator generator, String key, String type, Object value) throws Exception {
-        fieldToJson(generator, key, type, value, "0");
+        fieldToJson(generator, key, type, value, "");
     }
     public static String json(TreeMap<String, String> keys, Map<String, Object> data1,
                               Map<String, Object> data2) throws Exception {
