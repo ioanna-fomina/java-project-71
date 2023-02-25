@@ -32,4 +32,7 @@ public class Differ {
 
         return formattedResult;
     }
+    public static String generate(String path1, String path2) throws Exception {
+        return generate(path1, path2, "stylish");
+    }
 }
