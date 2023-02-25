@@ -18,15 +18,15 @@ public class DifferTest {
 
     @BeforeAll
     static void beforeAll() throws Exception {
-        jsonFile1 = "src/test/resources/oneTest.json";
-        jsonFile2 = "src/test/resources/twoTest.json";
+        jsonFile1 = "src/test/resources/file1.json";
+        jsonFile2 = "src/test/resources/file2.json";
 
-        yamlFile1 = "src/test/resources/oneTest.yml";
-        yamlFile2 = "src/test/resources/twoTest.yml";
+        yamlFile1 = "src/test/resources/file1.yml";
+        yamlFile2 = "src/test/resources/file2.yml";
 
-        expectStylishString = Files.readString(Paths.get("src/test/resources/expectStylish.txt"));
-        expectPlainString = Files.readString(Paths.get("src/test/resources/expectPlain.txt"));
-        expectJsonString = Files.readString(Paths.get("src/test/resources/expectJson.json"));
+        expectStylishString = Files.readString(Paths.get("src/test/resources/result_stylish.txt"));
+        expectPlainString = Files.readString(Paths.get("src/test/resources/result_plain.txt"));
+        //expectJsonString = Files.readString(Paths.get("src/test/resources/result_json.json"));
     }
 
     @Test

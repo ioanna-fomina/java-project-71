@@ -1,7 +1,0 @@
-Property 'keyFive' was added with value: [complex value]
-Property 'keyFour' was updated. From [complex value] to [complex value]
-Property 'keySeven' was removed
-Property 'keyThree' was updated. From [complex value] to [complex value]
-Property 'oneKey' was updated. From 'value1' to 1
-Property 'seven' was added with value: [complex value]
-Property 'ten' was added with value: [complex value]

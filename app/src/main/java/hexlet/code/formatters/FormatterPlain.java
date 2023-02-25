@@ -41,7 +41,7 @@ public class FormatterPlain {
                 case "updated" -> result.append(updatedToString(key, data1.get(key), data2.get(key)));
                 default -> { }
             }
-            if ((!key.equals(keys.lastKey()) && !entry.getValue().equals("unchanged"))) {
+            if (!entry.getValue().equals("unchanged")) {
                 result.append("\n");
             }
         }
