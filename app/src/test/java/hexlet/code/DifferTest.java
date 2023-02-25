@@ -5,25 +5,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class DifferTest {
     static String expectStylishString;
     static String expectPlainString;
     static String expectJsonString;
-    static Path jsonFile1;
-    static Path jsonFile2;
-    static Path yamlFile1;
-    static Path yamlFile2;
+    static String jsonFile1;
+    static String jsonFile2;
+    static String yamlFile1;
+    static String yamlFile2;
 
     @BeforeAll
     static void beforeAll() throws Exception {
-        jsonFile1 = Paths.get("src/test/resources/oneTest.json");
-        jsonFile2 = Paths.get("src/test/resources/twoTest.json");
+        jsonFile1 = "src/test/resources/oneTest.json";
+        jsonFile2 = "src/test/resources/twoTest.json";
 
-        yamlFile1 = Paths.get("src/test/resources/oneTest.yml");
-        yamlFile2 = Paths.get("src/test/resources/twoTest.yml");
+        yamlFile1 = "src/test/resources/oneTest.yml";
+        yamlFile2 = "src/test/resources/twoTest.yml";
 
         expectStylishString = Files.readString(Paths.get("src/test/resources/expectStylish.txt"));
         expectPlainString = Files.readString(Paths.get("src/test/resources/expectPlain.txt"));
