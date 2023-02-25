@@ -8,16 +8,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class DifferTest {
-    static String expectStylishString;
-    static String expectPlainString;
-    static String expectJsonString;
-    static String jsonFile1;
-    static String jsonFile2;
-    static String yamlFile1;
-    static String yamlFile2;
+    private static String expectStylishString;
+    private static String expectPlainString;
+    private static String expectJsonString;
+    private static String jsonFile1;
+    private static String jsonFile2;
+    private static String yamlFile1;
+    private static String yamlFile2;
 
     @BeforeAll
-    static void beforeAll() throws Exception {
+    public static void beforeAll() throws Exception {
         jsonFile1 = "src/test/resources/file1.json";
         jsonFile2 = "src/test/resources/file2.json";
 
