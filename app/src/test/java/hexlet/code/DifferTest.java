@@ -26,7 +26,7 @@ public class DifferTest {
 
         expectStylishString = Files.readString(Paths.get("src/test/resources/result_stylish.txt"));
         expectPlainString = Files.readString(Paths.get("src/test/resources/result_plain.txt"));
-        //expectJsonString = Files.readString(Paths.get("src/test/resources/result_json.json"));
+        expectJsonString = Files.readString(Paths.get("src/test/resources/result_json.json"));
     }
 
     @Test

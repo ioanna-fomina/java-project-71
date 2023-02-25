@@ -48,8 +48,8 @@ public class FormatterJson {
                 generator.writeRaw(",");
             }
         }
-        generator.writeRaw("}");
         generator.writeRaw("]");
+        generator.writeRaw("\n");
         generator.close();
         Path filepath = Paths.get(jsonFile.toURI()).toAbsolutePath().normalize();
         return Files.readString(filepath);
