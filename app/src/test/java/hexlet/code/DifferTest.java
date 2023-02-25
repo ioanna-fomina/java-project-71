@@ -31,7 +31,7 @@ public class DifferTest {
 
     @Test
     public void testDifferJsonStylish() throws Exception {
-        String actual = Differ.generate(jsonFile1, jsonFile2, "stylish");
+        String actual = Differ.generate(jsonFile1, jsonFile2);
         System.out.println(expectStylishString);
         System.out.println(actual);
         assertEquals(expectStylishString, actual);
@@ -55,7 +55,7 @@ public class DifferTest {
 
     @Test
     public void testDifferYamlStylish() throws Exception {
-        String actual = Differ.generate(yamlFile1, yamlFile2, "stylish");
+        String actual = Differ.generate(yamlFile1, yamlFile2);
         System.out.println(expectStylishString);
         System.out.println(actual);
         assertEquals(expectStylishString, actual);
