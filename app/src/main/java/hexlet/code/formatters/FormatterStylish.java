@@ -3,7 +3,7 @@ package hexlet.code.formatters;
 import java.util.Map;
 
 public class FormatterStylish {
-    /*static String valueToString(String key, Object value) {
+    static String valueToString(String key, Object value) {
         String resultValue;
         if (value == null) {
             resultValue = "null";
@@ -37,8 +37,8 @@ public class FormatterStylish {
             }
         }
         return "{" + result + "\n}";
-    }*/
-    public static String stylish(Map<String, String> keys, Map<String, Object> data1, Map<String, Object> data2) {
+    }
+    /*public static String stylish(Map<String, String> keys, Map<String, Object> data1, Map<String, Object> data2) {
         var result = new StringBuilder();
 
         for (Map.Entry<String, String> entry: keys.entrySet()) {
@@ -63,5 +63,5 @@ public class FormatterStylish {
             }
         }
         return "{" + result + "\n}";
-    }
+    }*/
 }
