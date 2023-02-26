@@ -9,14 +9,9 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class Differ {
-    static String getFormatFile(Path path) {
-        String filename = path.getFileName().toString();
-        int pointIndex = filename.lastIndexOf(".");
-        return filename.substring(pointIndex + 1);
-    }
-    public static String generate(String path1, String path2, String format) throws Exception {
-        Path filepath1 = Paths.get(path1).toAbsolutePath().normalize();
-        Path filepath2 = Paths.get(path2).toAbsolutePath().normalize();
+    public static String generate(String pathString1, String pathString2, String format) throws Exception {
+        Path filepath1 = Paths.get(pathString1).toAbsolutePath().normalize();
+        Path filepath2 = Paths.get(pathString2).toAbsolutePath().normalize();
         File file1 = filepath1.toFile();
         File file2 = filepath2.toFile();
         if (!Files.exists(filepath1)) {
@@ -25,7 +20,7 @@ public class Differ {
         if (!Files.exists(filepath2)) {
             throw new Exception("File '" + file2 + "' does not exist");
         }
-        String formatFile = getFormatFile(filepath1);
+        String formatFile = pathString1.substring(pathString1.lastIndexOf(".") + 1);
 
         List<TreeMap> result = Parser.parse(file1, file2, formatFile);
         String formattedResult = Formatter.buildFormat(result, format);
