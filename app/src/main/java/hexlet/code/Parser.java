@@ -24,7 +24,7 @@ public class Parser {
                 mapper = new YAMLMapper();
                 break;
             default:
-                break;
+                throw new Exception(String.format("unknown file format: %s", format));
         }
 
         Map<String, Object> map = mapper.readValue(file, Map.class);
