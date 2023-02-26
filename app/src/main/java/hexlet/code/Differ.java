@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.TreeMap;
 
 public class Differ {
+    static Path stringToFilepath(String str) {
+        return Paths.get(str).toAbsolutePath().normalize();
+    }
     public static String generate(String pathString1, String pathString2, String format) throws Exception {
-        Path filepath1 = Paths.get(pathString1).toAbsolutePath().normalize();
-        Path filepath2 = Paths.get(pathString2).toAbsolutePath().normalize();
+        Path filepath1 = stringToFilepath(pathString1);
+        Path filepath2 = stringToFilepath(pathString2);
         File file1 = filepath1.toFile();
         File file2 = filepath2.toFile();
         if (!Files.exists(filepath1)) {
