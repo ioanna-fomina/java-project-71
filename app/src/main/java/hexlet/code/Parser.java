@@ -49,14 +49,17 @@ public class Parser {
 
         TreeMap<String, String> keysWithStatus = new TreeMap<>(Comparator.naturalOrder());
         for (String key: keys) {
+            if (isEqualValues(data1.get(key), data2.get(key))) {
+                keysWithStatus.put(key, "unchanged");
+            }
+            if (!isEqualValues(data1.get(key), data2.get(key))) {
+                keysWithStatus.put(key, "updated");
+            }
             if (!data1.containsKey(key)) {
                 keysWithStatus.put(key, "added");
-            } else if (!data2.containsKey(key)) {
+            }
+            if (!data2.containsKey(key)) {
                 keysWithStatus.put(key, "removed");
-            } else if (isEqualValues(data1.get(key), data2.get(key))) {
-                keysWithStatus.put(key, "unchanged");
-            } else {
-                keysWithStatus.put(key, "updated");
             }
         }
         LinkedList<TreeMap> list = new LinkedList<>(List.of(keysWithStatus, data1, data2));
