@@ -28,12 +28,11 @@ public class Tree {
             Set<String> keys, Map<String, Object> data1, Map<String, Object> data2) throws Exception {
 
         TreeMap<String, Map<String, List<Object>>> differences = new TreeMap<>(Comparator.naturalOrder());
-        Object emptyObj = "";
         for (String key: keys) {
             if (!data1.containsKey(key)) {
-                differences.put(key, statusAndValues("added", emptyObj, data2.get(key)));
+                differences.put(key, statusAndValues("added", "", data2.get(key)));
             } else if (!data2.containsKey(key)) {
-                differences.put(key, statusAndValues("removed", data1.get(key), emptyObj));
+                differences.put(key, statusAndValues("removed", data1.get(key), ""));
             } else if (isEqualValues(data1.get(key), data2.get(key))) {
                 differences.put(key, statusAndValues("unchanged", data1.get(key), data2.get(key)));
             } else {
