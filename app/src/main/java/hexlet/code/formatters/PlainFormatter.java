@@ -1,9 +1,10 @@
 package hexlet.code.formatters;
 
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class FormatterPlain {
+public class PlainFormatter {
     static String valueToString(Object value) {
         String string;
         if (value == null) {
@@ -29,20 +30,25 @@ public class FormatterPlain {
         String value2Str = valueToString(value2);
         return String.format("Property '%s' was updated. From %s to %s", key, value1Str, value2Str);
     }
-    public static String plain(TreeMap<String, String> keys, Map<String, Object> data1, Map<String, Object> data2) {
+    public static String plain(TreeMap<String, Map<String, List<Object>>> tree) {
         var result = new StringBuilder();
 
-        for (Map.Entry<String, String> entry: keys.entrySet()) {
+        for (Map.Entry<String, Map<String, List<Object>>> entry: tree.entrySet()) {
             String key = entry.getKey();
 
-            switch (entry.getValue()) {
-                case "added" -> result.append(addedToString(key, data2.get(key)));
-                case "removed" -> result.append(removedToString(key));
-                case "updated" -> result.append(updatedToString(key, data1.get(key), data2.get(key)));
-                default -> { }
-            }
-            if ((!key.equals(keys.lastKey()) && !entry.getValue().equals("unchanged"))) {
-                result.append("\n");
+            Map<String, List<Object>> map = entry.getValue();
+            for (Map.Entry<String, List<Object>> statusAndValues: map.entrySet()) {
+                switch (statusAndValues.getKey()) {
+                    case "added" -> result.append(addedToString(key, statusAndValues.getValue().get(1)));
+                    case "removed" -> result.append(removedToString(key));
+                    case "updated" -> result.append(updatedToString(
+                            key, statusAndValues.getValue().get(0), statusAndValues.getValue().get(1)));
+                    default -> {
+                    }
+                }
+                if ((!key.equals(tree.lastKey()) && !statusAndValues.getKey().equals("unchanged"))) {
+                    result.append("\n");
+                }
             }
         }
         return result.toString();

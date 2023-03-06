@@ -1,29 +1,26 @@
 package hexlet.code;
 
-import hexlet.code.formatters.FormatterJson;
-import hexlet.code.formatters.FormatterPlain;
-import hexlet.code.formatters.FormatterStylish;
+import hexlet.code.formatters.JsonFormatter;
+import hexlet.code.formatters.PlainFormatter;
+import hexlet.code.formatters.StylishFormatter;
 
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Formatter {
-    public static String buildFormat(List<TreeMap> maps, String format) throws Exception {
-        TreeMap<String, String> keys = maps.get(0);
-        TreeMap<String, Object> data1 = maps.get(1);
-        TreeMap<String, Object> data2 = maps.get(2);
-
+    public static String buildFormat(TreeMap<String, Map<String, List<Object>>> tree, String format) throws Exception {
         String result;
 
         switch (format) {
             case "stylish":
-                result = FormatterStylish.stylish(keys, data1, data2);
+                result = StylishFormatter.stylish(tree);
                 break;
             case "plain":
-                result = FormatterPlain.plain(keys, data1, data2);
+                result = PlainFormatter.plain(tree);
                 break;
             case "json":
-                result = FormatterJson.json(keys, data1, data2);
+                result = JsonFormatter.json(tree);
                 break;
             default:
                 throw new Exception("This format is not available");

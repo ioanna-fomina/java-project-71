@@ -6,15 +6,16 @@ import java.nio.file.Path;
 
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Differ {
-    static Path stringToFilepath(String str) {
+    static Path getAbsolutePath(String str) {
         return Paths.get(str).toAbsolutePath().normalize();
     }
     public static String generate(String pathString1, String pathString2, String format) throws Exception {
-        Path filepath1 = stringToFilepath(pathString1);
-        Path filepath2 = stringToFilepath(pathString2);
+        Path filepath1 = getAbsolutePath(pathString1);
+        Path filepath2 = getAbsolutePath(pathString2);
         File file1 = filepath1.toFile();
         File file2 = filepath2.toFile();
         if (!Files.exists(filepath1)) {
@@ -25,8 +26,8 @@ public class Differ {
         }
         String formatFile = pathString1.substring(pathString1.lastIndexOf(".") + 1);
 
-        List<TreeMap> result = Parser.parse(file1, file2, formatFile);
-        String formattedResult = Formatter.buildFormat(result, format);
+        TreeMap<String, Map<String, List<Object>>> tree = Parser.parse(file1, file2, formatFile);
+        String formattedResult = Formatter.buildFormat(tree, format);
 
         return formattedResult;
     }

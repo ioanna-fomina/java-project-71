@@ -4,62 +4,45 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.io.File;
-import java.util.Comparator;
-import java.util.LinkedList;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 
 public class Parser {
-    static Map<String, Object> getData(File file, String format) throws Exception {
+    static Map<String, Object> parseJson(File file) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        switch (format) {
-            case "json":
-                mapper = new ObjectMapper();
-                break;
-            case "yml":
-                mapper = new YAMLMapper();
-                break;
-            default:
-                throw new Exception(String.format("unknown file format: %s", format));
-        }
-
-        Map<String, Object> map = mapper.readValue(file, Map.class);
-        return map;
+        return mapper.readValue(file, Map.class);
+    }
+    static Map<String, Object> parseYaml(File file) throws IOException {
+        ObjectMapper mapper = new YAMLMapper();
+        return mapper.readValue(file, Map.class);
     }
 
-    static boolean isEqualValues(Object obj1, Object obj2) {
-        if (obj1 == null || obj2 == null) {
-            return obj1 == null && obj2 == null;
-        } else {
-            return obj1.equals(obj2);
+    public static TreeMap<String, Map<String, List<Object>>> parse(
+            File file1, File file2, String formatFile) throws Exception {
+        Map<String, Object> data1;
+        Map<String, Object> data2;
+        switch (formatFile) {
+            case "json" -> {
+                data1 = new HashMap<>(parseJson(file1));
+                data2 = new HashMap<>(parseJson(file2));
+            }
+            case "yml" -> {
+                data1 = new HashMap<>(parseYaml(file1));
+                data2 = new HashMap<>(parseYaml(file2));
+            }
+            default -> throw new Exception(String.format("unknown file format: %s", formatFile));
         }
-    }
-    public static LinkedList<TreeMap> parse(File file1, File file2, String formatFile) throws Exception {
-        TreeMap<String, Object> data1 = new TreeMap<>(getData(file1, formatFile));
-        TreeMap<String, Object> data2 = new TreeMap<>(getData(file2, formatFile));
 
-        Set<String> keys = new TreeSet<>(Comparator.naturalOrder());
-
+        Set<String> keys = new HashSet<>();
         keys.addAll(data1.keySet());
         keys.addAll(data2.keySet());
 
-        TreeMap<String, String> keysWithStatus = new TreeMap<>(Comparator.naturalOrder());
-        for (String key: keys) {
-            if (!data1.containsKey(key)) {
-                keysWithStatus.put(key, "added");
-            } else if (!data2.containsKey(key)) {
-                keysWithStatus.put(key, "removed");
-            } else if (isEqualValues(data1.get(key), data2.get(key))) {
-                keysWithStatus.put(key, "unchanged");
-            } else {
-                keysWithStatus.put(key, "updated");
-            }
-        }
-        LinkedList<TreeMap> list = new LinkedList<>(List.of(keysWithStatus, data1, data2));
-        return list;
+        return Tree.genDifferences(keys, data1, data2);
     }
 }
