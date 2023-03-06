@@ -5,7 +5,6 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -29,12 +28,12 @@ public class Parser {
         Map<String, Object> data2;
         switch (formatFile) {
             case "json" -> {
-                data1 = new HashMap<>(parseJson(file1));
-                data2 = new HashMap<>(parseJson(file2));
+                data1 = parseJson(file1);
+                data2 = parseJson(file2);
             }
             case "yml" -> {
-                data1 = new HashMap<>(parseYaml(file1));
-                data2 = new HashMap<>(parseYaml(file2));
+                data1 = parseYaml(file1);
+                data2 = parseYaml(file2);
             }
             default -> throw new Exception(String.format("unknown file format: %s", formatFile));
         }

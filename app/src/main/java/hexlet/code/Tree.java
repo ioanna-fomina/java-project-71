@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -18,14 +17,18 @@ public class Tree {
         }
     }
     static Map<String, List<Object>> statusAndValues(String status, Object value1, Object value2) {
-        Map<String, List<Object>> map = new HashMap<>(Map.of(status, new ArrayList<>(List.of(value1, value2))));
+        Map<String, List<Object>> map = new HashMap<>();
+        List<Object> list = new LinkedList<>();
+        list.add(value1);
+        list.add(value2);
+        map.put(status, list);
         return map;
     }
     public static TreeMap<String, Map<String, List<Object>>> genDifferences(
             Set<String> keys, Map<String, Object> data1, Map<String, Object> data2) throws Exception {
 
         TreeMap<String, Map<String, List<Object>>> differences = new TreeMap<>(Comparator.naturalOrder());
-        Object emptyObj = new String("");
+        Object emptyObj = "";
         for (String key: keys) {
             if (!data1.containsKey(key)) {
                 differences.put(key, statusAndValues("added", emptyObj, data2.get(key)));
