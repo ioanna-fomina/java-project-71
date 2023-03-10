@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Formatter {
-    public static String buildFormat(TreeMap<String, Map<String, List<Object>>> tree, String format) throws Exception {
+    public static String format(TreeMap<String, Map<String, List<Object>>> tree, String format) throws Exception {
         String result;
 
         switch (format) {

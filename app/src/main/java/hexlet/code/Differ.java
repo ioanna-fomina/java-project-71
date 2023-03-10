@@ -13,21 +13,21 @@ public class Differ {
     static Path getAbsolutePath(String str) {
         return Paths.get(str).toAbsolutePath().normalize();
     }
+    static Map<String, Object> getData(String pathString) throws Exception {
+        Path filepath = getAbsolutePath(pathString);
+        File file = filepath.toFile();
+        if (!Files.exists(filepath)) {
+            throw new Exception("File '" + file + "' does not exist");
+        }
+        String formatFile = pathString.substring(pathString.lastIndexOf(".") + 1);
+        return Parser.parse(file, formatFile);
+    }
     public static String generate(String pathString1, String pathString2, String format) throws Exception {
-        Path filepath1 = getAbsolutePath(pathString1);
-        Path filepath2 = getAbsolutePath(pathString2);
-        File file1 = filepath1.toFile();
-        File file2 = filepath2.toFile();
-        if (!Files.exists(filepath1)) {
-            throw new Exception("File '" + file1 + "' does not exist");
-        }
-        if (!Files.exists(filepath2)) {
-            throw new Exception("File '" + file2 + "' does not exist");
-        }
-        String formatFile = pathString1.substring(pathString1.lastIndexOf(".") + 1);
+        Map<String, Object> data1 = getData(pathString1);
+        Map<String, Object> data2 = getData(pathString2);
 
-        TreeMap<String, Map<String, List<Object>>> tree = Parser.parse(file1, file2, formatFile);
-        String formattedResult = Formatter.buildFormat(tree, format);
+        TreeMap<String, Map<String, List<Object>>> tree = Tree.genDifferences(data1, data2);
+        String formattedResult = Formatter.format(tree, format);
 
         return formattedResult;
     }
